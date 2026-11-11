@@ -1,0 +1,11 @@
+{
+  "name": "verify-games",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static HTML game site with a local dev server",
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "dev": "node serve.mjs"
+  }
+}
