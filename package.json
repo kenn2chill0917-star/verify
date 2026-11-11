@@ -21,7 +21,7 @@
   ],
   "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": "^22.22.0 || >= 24.8.0"
   },
   "scripts": {
     "start": "node serve.mjs",
