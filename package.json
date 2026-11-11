@@ -6,6 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "node serve.mjs",
-    "dev": "node serve.mjs"
+    "dev": "node serve.mjs",
+    "lint:html": "html-validate \"*.html\""
+  },
+  "devDependencies": {
+    "html-validate": "^11.21.0"
   }
 }

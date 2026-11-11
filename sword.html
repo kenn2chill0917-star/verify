@@ -71,7 +71,7 @@
       <div><span>+&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{Number(results.hex[1] / (256 * 256)).toFixed(9)}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>({{results.hex[1]}} / (256 ^ 2))</span></div>
       <div><span>+&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{Number(results.hex[2] / (256 * 256 * 256)).toFixed(9)}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>({{results.hex[2]}} / (256 ^ 3))</span></div>
       <div><span>+&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{Number(results.hex[3] / (256 * 256 * 256 * 256)).toFixed(9)}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>({{results.hex[3]}} / (256 ^ 4))</span></div>
-      <div><span>=&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{numResult}}</div>
+      <div><span>=&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{numResult}}</span></div>
     </div>
   </form>
   <p>
@@ -88,7 +88,6 @@
     </a>
   </p>
 </div>
-</body>
 <script>
 let qs = tools.queryString();
 var app = new Vue({
@@ -155,4 +154,5 @@ var app = new Vue({
   }
 });
 </script>
+</body>
 </html>
