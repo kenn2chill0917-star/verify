@@ -52,7 +52,6 @@
     </form>
     <hr>
     <form class="py-5">
-      <form class="py-5">
         <h2 class="text-center pb-5">Results</h2>
         <h5>Final Result</h5>
         <input class="form-control" readonly :value="numResult * 1000">
@@ -75,15 +74,12 @@
             BigInt(8)) * Math.pow(2, -53) * 1000}}`.</li>
         </ol>
         <div></div>
-      </form>
       <div :class="{'text-success': numResult * 1000 <= 495}">0~495 = {{range1}}</div>
       <div :class="{'text-success': numResult * 1000 >= 496 && numResult * 1000 <= 825}">496~825 = {{range2}}</div>
       <div :class="{'text-success': numResult * 1000 >= 826 && numResult * 1000 <= 990}">826~990 = {{range3}}</div>
       <div :class="{'text-success': numResult * 1000 >= 991}">991~1000 = {{range4}}</div>
+    </form>
   </div>
-  </form>
-  </div>
-</body>
 <script>
   let qs = tools.queryString();
   var app = new Vue({
@@ -135,7 +131,7 @@
     },
     watch: {
       'this.numResult'() {
-        ga('send', 'event', 'ClassicDice', 'verify', this.server_seed, { metric0: this.client_seed, metric1: this.nonce })
+        ga('send', 'event', 'ClassicDice', 'verify')
       }
     },
     created() {
@@ -157,5 +153,6 @@
     }
   });
 </script>
+</body>
 
 </html>

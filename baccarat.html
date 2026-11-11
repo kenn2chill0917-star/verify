@@ -104,7 +104,6 @@
         </div>
       </form>
     </div>
-  </body>
   <script>
     function seedGenerator(hash, salt) {
       const hmac = CryptoJS.HmacSHA256(CryptoJS.enc.Hex.parse(hash), salt);
@@ -303,7 +302,7 @@
       computed: {},
       created() {
         this.doVerify();
-        ga('send', 'event', 'Baccarat', 'verify', this.initHash, {metric0: this.amount})
+        ga('send', 'event', 'Baccarat', 'verify')
       },
       methods: {
         doVerify() {
@@ -324,5 +323,6 @@
       },
     });
   </script>
+  </body>
 </html>
 

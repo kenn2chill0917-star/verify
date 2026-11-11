@@ -69,7 +69,6 @@
     <div></div>
   </form>
 </div>
-</body>
 <script>
 let qs = tools.queryString();
 var app = new Vue({
@@ -103,7 +102,7 @@ var app = new Vue({
   },
   watch: {
     'this.numResult'() {
-      ga('send', 'event', 'Dice', 'verify', this.server_seed, {metric0: this.client_seed, metric1: this.nonce})
+      ga('send', 'event', 'Dice', 'verify')
     }
   },
   created () {
@@ -125,4 +124,5 @@ var app = new Vue({
   }
 });
 </script>
+</body>
 </html>

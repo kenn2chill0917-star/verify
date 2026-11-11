@@ -69,7 +69,7 @@
       <div><span>+&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{Number(results.hex[1] / (256 * 256)).toFixed(9)}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>({{results.hex[1]}} / (256 ^ 2))</span></div>
       <div><span>+&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{Number(results.hex[2] / (256 * 256 * 256)).toFixed(9)}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>({{results.hex[2]}} / (256 ^ 3))</span></div>
       <div><span>+&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{Number(results.hex[3] / (256 * 256 * 256 * 256)).toFixed(9)}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>({{results.hex[3]}} / (256 ^ 4))</span></div>
-      <div><span>=&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{numResult}}</div>
+      <div><span>=&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{numResult}}</span></div>
     </div>
   </form>
   <form class="py-5">
@@ -128,7 +128,6 @@
     </table>
   </div>
 </div>
-</body>
 <script>
 let qs = tools.queryString();
 var app = new Vue({
@@ -213,7 +212,7 @@ var app = new Vue({
   },
   watch: {
     'this.numResult'() {
-      ga('send', 'event', 'Sword', 'verify', this.server_seed, {metric0: this.client_seed, metric1: this.nonce})
+      ga('send', 'event', 'Sword', 'verify')
     }
   },
   created () {
@@ -235,4 +234,5 @@ var app = new Vue({
   }
 });
 </script>
+</body>
 </html>

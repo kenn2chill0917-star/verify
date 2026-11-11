@@ -82,7 +82,7 @@
             </tr>
             <tr>
               <td v-for="(num, index) in layerInfo" :class="{'bg-success': index == luckyIndex}">
-                <div v-if="index == luckyIndex">{{ lucky }}</span>
+                <div v-if="index == luckyIndex">{{ lucky }}</div>
               </td>
             </tr>
           </tbody>
@@ -132,9 +132,6 @@
       </div>
     </form>
   </div>
-</body>
-
-</html>
 <script>
   let qs = tools.queryString();
   var data = [
@@ -2125,7 +2122,7 @@
     },
     watch: {
       'this.lucky'() {
-        ga('send', 'event', 'Slot', 'verify', this.server_seed, { metric0: this.client_seed, metric1: this.nonce })
+        ga('send', 'event', 'Slot', 'verify')
       }
     },
     mounted() {
@@ -2153,3 +2150,6 @@
   });
 
 </script>
+</body>
+
+</html>
