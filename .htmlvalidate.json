@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "void-style": "warn",
+    "no-inline-style": "warn",
+    "no-trailing-whitespace": "warn",
+    "attr-quotes": "warn",
+    "no-implicit-input-type": "warn",
+    "no-implicit-button-type": "warn",
+    "script-type": "warn",
+    "wcag/h32": "warn",
+    "wcag/h63": "warn"
+  }
+}

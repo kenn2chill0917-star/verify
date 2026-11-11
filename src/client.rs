@@ -128,7 +128,10 @@ async fn discover(url: &str, timeout: Duration) -> Result<String, Error> {
     Ok(endpoint)
 }
 
-async fn connect_quic(hostport: &str, config: &ClientConfig) -> Result<(Connection, Endpoint), Error> {
+async fn connect_quic(
+    hostport: &str,
+    config: &ClientConfig,
+) -> Result<(Connection, Endpoint), Error> {
     let (host, port) = hostport
         .rsplit_once(':')
         .ok_or_else(|| Error::InvalidEndpoint(hostport.into(), "expected host:port".into()))?;
@@ -138,7 +141,12 @@ async fn connect_quic(hostport: &str, config: &ClientConfig) -> Result<(Connecti
     let addr: SocketAddr = tokio::net::lookup_host((host, port))
         .await?
         .next()
-        .ok_or_else(|| Error::InvalidEndpoint(hostport.into(), "DNS resolution returned no addresses".into()))?;
+        .ok_or_else(|| {
+            Error::InvalidEndpoint(
+                hostport.into(),
+                "DNS resolution returned no addresses".into(),
+            )
+        })?;
 
     let provider = Arc::new(rustls::crypto::ring::default_provider());
     let builder = rustls::ClientConfig::builder_with_provider(provider.clone())
@@ -171,8 +179,7 @@ async fn connect_quic(hostport: &str, config: &ClientConfig) -> Result<(Connecti
     let connecting = endpoint.connect(addr, host)?;
     let conn = tokio::time::timeout(config.connect_timeout, connecting)
         .await
-        .map_err(|_| Error::Timeout(format!("QUIC handshake with {hostport}")))?
-        ?;
+        .map_err(|_| Error::Timeout(format!("QUIC handshake with {hostport}")))??;
     Ok((conn, endpoint))
 }
 
@@ -184,7 +191,9 @@ struct NoVerifier {
 impl NoVerifier {
     fn new(provider: Arc<rustls::crypto::CryptoProvider>) -> Self {
         Self {
-            schemes: provider.signature_verification_algorithms.supported_schemes(),
+            schemes: provider
+                .signature_verification_algorithms
+                .supported_schemes(),
         }
     }
 }
