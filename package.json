@@ -4,6 +4,9 @@
   "private": true,
   "description": "Static HTML game site with a local dev server",
   "type": "module",
+  "engines": {
+    "node": "^22.22.0 || >= 24.8.0"
+  },
   "scripts": {
     "start": "node serve.mjs",
     "dev": "node serve.mjs",
