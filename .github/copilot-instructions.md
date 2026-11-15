@@ -16,8 +16,15 @@ This repository holds two independent things:
 
 - Static site: `npm start` (or `npm run dev`) runs the local dev server in `serve.mjs`, which serves
   the repository root at http://localhost:8080 (override with the `PORT` environment variable).
-  `package.json` is ESM (`"type": "module"`) and has no dependencies, so no install is required.
+  `package.json` is ESM (`"type": "module"`) and has no runtime dependencies, so the dev server runs
+  without installing anything.
+- Linting the site: `npm ci` then `npm run lint:html` runs `html-validate` over the root `*.html`
+  pages, configured by `.htmlvalidate.json`. `html-validate` is the only devDependency, and it is
+  what makes `engines.node` require `^22.22.0 || >= 24.8.0`.
 - Rust crate: `cargo build` and `cargo test`; run the example with `cargo run --example send`.
+- CI: `.github/workflows/ci.yml` runs on every push to `main` and on every pull request. The `rust`
+  job runs `cargo fmt --check`, `cargo clippy -D warnings`, and `cargo test`; the `web` job runs
+  `npm ci` and `npm run lint:html` on Node 24.
 - Deployment: `.github/workflows/deploy-pages.yml` publishes the repository root to GitHub Pages on
   every push to `main`.
 
