@@ -47,6 +47,11 @@ repository to GitHub Pages on every push to `main`, and can also be triggered ma
 whole repository is uploaded as the Pages artifact, so each verifier is reachable at its
 own path — for example `/dice.html`.
 
+## Security
+
+Found a vulnerability? Please report it privately — see [SECURITY.md](SECURITY.md) for the
+coordinated-disclosure policy covering both the verifier site and the `solanagun-quic` crate.
+
 ## License
 
 This project is dual-licensed under either of
