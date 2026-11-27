@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B3D8F2A-5C1E-4A0B-9F6D-2E8A1C4B7D90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FiddlerWillowLite</RootNamespace>
+    <AssemblyName>FiddlerWillowLite</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <FiddlerExe Condition=" '$(FiddlerExe)' == '' and Exists('$(ProgramFiles)\Fiddler\Fiddler.exe') ">$(ProgramFiles)\Fiddler\Fiddler.exe</FiddlerExe>
+    <FiddlerExe Condition=" '$(FiddlerExe)' == '' and Exists('$(MSBuildProgramFiles32)\Fiddler\Fiddler.exe') ">$(MSBuildProgramFiles32)\Fiddler\Fiddler.exe</FiddlerExe>
+    <FiddlerExe Condition=" '$(FiddlerExe)' == '' and Exists('$(LocalAppData)\Programs\Fiddler\Fiddler.exe') ">$(LocalAppData)\Programs\Fiddler\Fiddler.exe</FiddlerExe>
+    <FiddlerExe Condition=" '$(FiddlerExe)' == '' and Exists('$(USERPROFILE)\AppData\Local\Programs\Fiddler\Fiddler.exe') ">$(USERPROFILE)\AppData\Local\Programs\Fiddler\Fiddler.exe</FiddlerExe>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- 编译后自动把 DLL 放进当前用户的 Fiddler 扩展目录，重启 Fiddler 即加载。 -->
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(USERPROFILE)\Documents\Fiddler2\Scripts" mkdir "$(USERPROFILE)\Documents\Fiddler2\Scripts"&#xD;&#xA;copy /Y "$(TargetPath)" "$(USERPROFILE)\Documents\Fiddler2\Scripts\$(TargetFilename)"</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Fiddler" Condition=" '$(FiddlerExe)' != '' ">
+      <HintPath>$(FiddlerExe)</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models.cs" />
+    <Compile Include="RuleStore.cs" />
+    <Compile Include="EditDialog.cs" />
+    <Compile Include="HostRuleParser.cs" />
+    <Compile Include="BulkHostDialog.cs" />
+    <Compile Include="BulkDelete.cs" />
+    <Compile Include="BulkDeleteDialog.cs" />
+    <Compile Include="MultiSelectTree.cs" />
+    <Compile Include="WillowView.cs" />
+    <Compile Include="WillowPlugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

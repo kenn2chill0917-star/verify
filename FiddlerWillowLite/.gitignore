@@ -1,0 +1,35 @@
+# Downloaded build toolchain (third-party binaries; restore with bootstrap.py)
+.toolchain/
+
+# Build outputs
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+
+# Visual Studio / IDE
+.vs/
+.vscode/
+*.sln.docstates
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Fiddler installers and temporary downloads
+.installers/
+*.msi
+FiddlerSetup.exe
+
+# Diagnostics and captures
+*.log
+*.saz
+*.png
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
